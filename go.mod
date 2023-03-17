@@ -1,3 +1,3 @@
-module RoyalReaderBE
+module github.com/davidkt99/RoyalReaderBE
 
-go 1.19
+go 1.20
