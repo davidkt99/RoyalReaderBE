@@ -1,7 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net/http"
+	"os"
+)
 
 func main() {
-	fmt.Println("Hello World!")
+	resp, err := http.Get("https://www.royalroad.com/fiction/syndication/65359")
+	if err != nil {
+		fmt.Println("Error: ", err)
+		os.Exit(1)
+	}
+
+	bs := make([]byte, 99999)
+	resp.Body.Read(bs)
+
+	fmt.Println(string(bs))
 }
