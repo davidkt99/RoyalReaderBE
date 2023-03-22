@@ -1,16 +1,25 @@
 package main
 
 import (
+	"fmt"
+
+	"github.com/davidkt99/RoyalReaderBE/db"
+	"github.com/davidkt99/RoyalReaderBE/models"
 	"github.com/davidkt99/RoyalReaderBE/scraper"
 	_ "github.com/lib/pq"
 )
 
 func main() {
-	// scraper.ScrapeChapter("https://www.royalroad.com/fiction/65359/ashes-of-heaven-book-one/chapter/1138407/chapter-24-the-great-dao-of-scamming")
+	db.DBSetup()
+	defer db.DBShutDown()
 
-	scraper.ScrapeBook("https://www.royalroad.com/fiction/41656/chaotic-craftsman-worships-the-cube")
+	bookTitle, bookUrl, allChapters := scraper.ScrapeBook("https://www.royalroad.com/fiction/65145/elysiums-multiverse")
+	book := models.Book{Name: bookTitle, Url: bookUrl}
+	bookId := db.InsertBook(book)
+	chapterIdList := db.InsertAllChapters(allChapters, bookId)
 
-	// db.DBSetup()
+	fmt.Println(bookId)
+	fmt.Println(chapterIdList)
 
 	// services.StartServices()
 

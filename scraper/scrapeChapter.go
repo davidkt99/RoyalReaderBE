@@ -1,22 +1,22 @@
 package scraper
 
 import (
-	"fmt"
-	"io/ioutil"
 	"strings"
 
+	"github.com/davidkt99/RoyalReaderBE/models"
 	"github.com/davidkt99/RoyalReaderBE/util"
 )
 
-func ScrapeChapter(url string) {
+func ScrapeChapter(url string) models.Chapter {
 	page := util.Download(url)
 
-	_, cut, _ := strings.Cut(string(page), "<div class=\"chapter-inner chapter-content\">")
-	chapter, _, _ := strings.Cut(string(cut), "</div>")
+	_, cutTitle, _ := strings.Cut(string(page), `<h1 style="margin-top: 10px" class="font-white">`)
+	title, _, _ := strings.Cut(string(cutTitle), "</h1>")
 
-	writeErr := ioutil.WriteFile("output.txt", []byte(chapter), 0644)
-	if writeErr != nil {
-		panic(writeErr)
-	}
-	fmt.Println(string(chapter))
+	_, cut, _ := strings.Cut(string(page), "<div class=\"chapter-inner chapter-content\">")
+	content, _, _ := strings.Cut(string(cut), "</div>")
+
+	chapter := models.Chapter{Name: title, Content: content}
+
+	return chapter
 }

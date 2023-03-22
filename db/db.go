@@ -7,6 +7,8 @@ import (
 	_ "github.com/lib/pq"
 )
 
+var db *sql.DB
+
 const (
 	host     = "localhost"
 	port     = 5432
@@ -19,11 +21,9 @@ func DBSetup() {
 	psqlconn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
 
 	// open database
-	db, err := sql.Open("postgres", psqlconn)
+	var err error
+	db, err = sql.Open("postgres", psqlconn)
 	CheckError(err)
-
-	// close database
-	defer db.Close()
 
 	// check db
 	err = db.Ping()
@@ -53,6 +53,11 @@ func DBSetup() {
 	// 	fmt.Println(name, content)
 	// }
 
+}
+
+// close database
+func DBShutDown() {
+	db.Close()
 }
 
 func CheckError(err error) {
