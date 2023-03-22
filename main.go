@@ -8,7 +8,7 @@ import (
 func main() {
 	// scraper.ScrapeChapter("https://www.royalroad.com/fiction/65359/ashes-of-heaven-book-one/chapter/1138407/chapter-24-the-great-dao-of-scamming")
 
-	scraper.ScrapeBook("https://www.royalroad.com/fiction/65324/wolf-of-the-blood-moon")
+	scraper.ScrapeBook("https://www.royalroad.com/fiction/41656/chaotic-craftsman-worships-the-cube")
 
 	// db.DBSetup()
 

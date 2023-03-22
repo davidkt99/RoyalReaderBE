@@ -12,12 +12,18 @@ import (
 func ScrapeBook(url string) {
 	page := util.Download(url)
 
+	//*	Title
+	_, titleCut, _ := strings.Cut(string(page), "<title>")
+	titleText, _, _ := strings.Cut(string(titleCut), " | Royal Road</title>")
+
+	fmt.Println(titleText)
+
 	//*	Chapter Urls
-	_, cut, _ := strings.Cut(string(page), "<table")
-	table, _, _ := strings.Cut(string(cut), "</table>")
+	_, chapterCut, _ := strings.Cut(string(page), "<table")
+	chapterTable, _, _ := strings.Cut(string(chapterCut), "</table>")
 
 	re := regexp.MustCompile(`href="([^"]*)"`)
-	match := re.FindAllSubmatch([]byte(table), -1)
+	match := re.FindAllSubmatch([]byte(chapterTable), -1)
 
 	//* Test Output
 	writeErr := ioutil.WriteFile("output.txt", match[0][1], 0644)
