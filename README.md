@@ -7,7 +7,7 @@ getChapter          return  chapter
 getBook             return  book
 getBooks            return  list of books
 getChapters         return  list of chapters from book
-getNewChapters      return  list of new chapters in all requested books
+getNewChapters      return  list of new chapters in all requested books https://www.airplane.dev/blog/creating-golang-cron-jobs
 
 
 Mutations
