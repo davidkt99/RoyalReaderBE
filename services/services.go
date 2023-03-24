@@ -7,6 +7,7 @@ import (
 func StartServices() {
 	router := gin.Default()
 	router.GET("/hello", SayHello)
+	router.GET("/chapters/:id", GetBookChapters)
 
 	router.Run("localhost:8080")
 }
