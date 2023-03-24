@@ -2,23 +2,26 @@ package main
 
 import (
 	"github.com/davidkt99/RoyalReaderBE/db"
-	"github.com/davidkt99/RoyalReaderBE/scraper"
+	"github.com/davidkt99/RoyalReaderBE/jobs"
+	"github.com/davidkt99/RoyalReaderBE/services"
 	_ "github.com/lib/pq"
 )
 
 func main() {
+	//*	Database Start
 	db.DBSetup()
 	defer db.DBShutDown()
 
+	//*		given url for book scrape all chapters and insert into database
 	// bookTitle, bookUrl, allChapters := scraper.ScrapeBook("https://www.royalroad.com/fiction/65145/elysiums-multiverse")
 	// book := models.Book{Name: bookTitle, Url: bookUrl}
 	// bookId := db.InsertBook(book)
 	// chapterIdList := db.InsertAllChapters(allChapters, bookId)
 
-	// fmt.Println(bookId)
-	// fmt.Println(chapterIdList)
+	//* CronJobs Start
+	jobs.CronJobsSetup()
 
-	scraper.CheckNewChapters("https://www.royalroad.com/fiction/65145/elysiums-multiverse")
-	// services.StartServices()
+	//*	Services Start
+	services.StartServices()
 
 }

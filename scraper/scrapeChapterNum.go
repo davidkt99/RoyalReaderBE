@@ -1,20 +1,20 @@
 package scraper
 
 import (
-	"fmt"
+	"strconv"
 	"strings"
 
 	"github.com/davidkt99/RoyalReaderBE/util"
 )
 
-func CheckNewChapters(url string) bool {
+func ScrapeChatperNum(url string) int {
 	page := util.Download(url)
 
 	//*	Num of Chapters
 	_, numCut, _ := strings.Cut(string(page), "data-chapters=\"")
 	num, _, _ := strings.Cut(string(numCut), "\">")
 
-	fmt.Println(num)
+	count, _ := strconv.Atoi(num)
 
-	return false
+	return count
 }
