@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/davidkt99/RoyalReaderBE/db"
-	"github.com/davidkt99/RoyalReaderBE/services"
+	"github.com/davidkt99/RoyalReaderBE/scraper"
 	_ "github.com/lib/pq"
 )
 
@@ -18,6 +18,7 @@ func main() {
 	// fmt.Println(bookId)
 	// fmt.Println(chapterIdList)
 
-	services.StartServices()
+	scraper.CheckNewChapters("https://www.royalroad.com/fiction/65145/elysiums-multiverse")
+	// services.StartServices()
 
 }
