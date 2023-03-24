@@ -5,5 +5,4 @@ type Chapter struct {
 	BookId  int64  `json:"bookId"`
 	Name    string `json:"name"`
 	Content string `json:"content"`
-	Read    bool   `json:"read"`
 }

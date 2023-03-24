@@ -1,28 +1,28 @@
 package db
 
-import (
-	"fmt"
+import "fmt"
 
-	"github.com/davidkt99/RoyalReaderBE/models"
-)
+type ChapterNameAndId struct {
+	Id   int64  `json:"id"`
+	Name string `json:"name"`
+}
 
-func QueryAllChaptersOfBook(bookId int64) []models.Chapter {
+func QueryChapterNameAndIdsByBookId(bookId int64) []ChapterNameAndId {
 	insertStmt := `
-	select chapter_id, chapter_name, chapter_content
+	select chapter_id, chapter_name
 	from books
 	join chapters on books.book_id=chapters.book_key
 	where books.book_id=$1`
 
-	var chapters []models.Chapter
+	var chapters []ChapterNameAndId
 
 	rows, e := db.Query(insertStmt, bookId)
 	CheckError(e)
 
 	defer rows.Close()
 	for rows.Next() {
-		chapter := models.Chapter{}
-		chapter.BookId = bookId
-		e := rows.Scan(&chapter.Id, &chapter.Name, &chapter.Content)
+		chapter := ChapterNameAndId{}
+		e := rows.Scan(&chapter.Id, &chapter.Name)
 		CheckError(e)
 
 		chapters = append(chapters, chapter)
@@ -36,4 +36,5 @@ func QueryAllChaptersOfBook(bookId int64) []models.Chapter {
 	}
 
 	return chapters
+
 }
