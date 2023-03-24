@@ -5,6 +5,8 @@
 
 getBooks
 
+getChapterIds
+getChapterById
 
 # Mutations
 

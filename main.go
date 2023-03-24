@@ -2,8 +2,6 @@ package main
 
 import (
 	"github.com/davidkt99/RoyalReaderBE/db"
-	"github.com/davidkt99/RoyalReaderBE/jobs"
-	"github.com/davidkt99/RoyalReaderBE/services"
 	_ "github.com/lib/pq"
 )
 
@@ -18,10 +16,12 @@ func main() {
 	// bookId := db.InsertBook(book)
 	// chapterIdList := db.InsertAllChapters(allChapters, bookId)
 
-	//* CronJobs Start
-	jobs.CronJobsSetup()
+	// //* CronJobs Start
+	// jobs.CronJobsSetup()
 
-	//*	Services Start
-	services.StartServices()
+	// //*	Services Start
+	// services.StartServices()
+
+	db.QueryChapterById(278)
 
 }
