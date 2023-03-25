@@ -52,3 +52,7 @@ func GetAllChapterNameId(c *gin.Context) {
 func SayHello(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, "Hello World!")
 }
+
+func GetBooks(c *gin.Context) {
+	c.IndentedJSON(http.StatusOK, db.QueryAllBooks())
+}
