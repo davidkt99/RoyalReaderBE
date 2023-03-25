@@ -10,6 +10,11 @@ import (
 // TODO: Add error checking
 func DownloadBook(url string) bool {
 
+	//* Checking if Book already exists
+	if db.QueryBookByUrl(url) {
+		return true
+	}
+
 	bookTitle, bookUrl, allChapters := scraper.ScrapeBook(url)
 	book := models.Book{Name: bookTitle, Url: bookUrl}
 	bookId := db.InsertBook(book)
