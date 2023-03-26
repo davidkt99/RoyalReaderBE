@@ -3,10 +3,7 @@
 
 # Queries
 
-getBooks
-
-getChapterIds
-getChapterById
+Add num of chapters to getBooks endpoint/db call
 
 # Mutations
 
@@ -21,7 +18,8 @@ Add Email user to cronJob
 
 # Database
 
-remove read from chapters
+Add users_books Table
+Add users       Table
 
 # Add Users
 
