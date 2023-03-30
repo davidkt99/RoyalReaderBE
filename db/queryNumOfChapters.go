@@ -6,7 +6,7 @@ import (
 
 func QueryNumOfChapters(bookId int64) int {
 	insertStmt := `
-	select count(*)
+	select count('x')
 	from books
 	join chapters on books.book_id=chapters.book_key
 	where books.book_id=$1`

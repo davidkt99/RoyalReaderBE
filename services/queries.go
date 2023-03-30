@@ -54,5 +54,5 @@ func SayHello(c *gin.Context) {
 }
 
 func GetBooks(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, db.QueryAllBooks())
+	c.IndentedJSON(http.StatusOK, db.QueryAllBooksWithChapterCounts())
 }
