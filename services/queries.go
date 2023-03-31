@@ -56,3 +56,13 @@ func SayHello(c *gin.Context) {
 func GetBooks(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, db.QueryAllBooksWithChapterCounts())
 }
+
+func Login(c *gin.Context) {
+	login := BODY_LOGIN{}
+	// binding to URI
+	if err := c.BindJSON(&login); err != nil {
+		c.AbortWithError(http.StatusBadRequest, err)
+		return
+	}
+	c.IndentedJSON(http.StatusOK, db.QueryUserVerifiyPassword(login.UserName, login.Password))
+}

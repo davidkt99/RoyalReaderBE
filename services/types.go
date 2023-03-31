@@ -7,3 +7,8 @@ type URI struct {
 type BODY_URL struct {
 	Url string `json:"url" uri:"url"`
 }
+
+type BODY_LOGIN struct {
+	UserName string `json:"userName" uri:"userName"`
+	Password string `json:"password" uri:"password"`
+}

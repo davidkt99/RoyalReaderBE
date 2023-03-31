@@ -43,3 +43,7 @@ Add url to book query
 # future improvements
 more specific sql queries to save on amount of queries
     getBooks for app should have num of chapters thus will need queryAllBook and queryNumOfChapters
+
+
+password -> https://stackoverflow.com/questions/18656528/how-do-i-encrypt-passwords-with-postgresql
+https://medium.com/@jcox250/password-hash-salt-using-golang-b041dc94cb72
