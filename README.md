@@ -47,3 +47,17 @@ more specific sql queries to save on amount of queries
 
 password -> https://stackoverflow.com/questions/18656528/how-do-i-encrypt-passwords-with-postgresql
 https://medium.com/@jcox250/password-hash-salt-using-golang-b041dc94cb72
+
+
+
+# structure
+
+should be 
+
+feature
+    /api
+    /buisnessLogic
+    /models
+    /dbCalls
+    /serviceSetup
+
