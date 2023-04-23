@@ -1,6 +1,18 @@
 # RoyalReaderBE
  The Backend of the RoyalRoad reader made for personal use.
 
+
+# Migrations
+Must already have a role named goServer
+
+migrate create -ext sql -dir db/migration/ -seq init_mg
+
+migrate -path db/migration/ -database "postgresql://goServer:1234@localhost:5432/testingNew?sslmode=disable" -verbose up
+
+migrate -path db/migration/ -database "postgresql://postgres:@localhost:5432/testingNew?sslmode=disable" -verbose up
+
+migrate -path db/migration/ -database "postgresql://postgres:@localhost:5432/testingNew?sslmode=disable" force <VERSION>
+
 # Queries
 
 Add num of chapters to getBooks endpoint/db call

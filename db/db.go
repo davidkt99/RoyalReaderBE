@@ -14,7 +14,7 @@ const (
 	port     = 5432
 	user     = "goServer"
 	password = "1234"
-	dbname   = "royalRoadReaderDB"
+	dbname   = "postgres"
 )
 
 func DBSetup() {
