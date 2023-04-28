@@ -31,28 +31,6 @@ func DBSetup() {
 
 	fmt.Println("Connected!")
 
-	// hardcoded
-	// insertStmt := `insert into "Chapters"("name", "content", "read") values($1, $2, false) RETURNING id`
-	// id := 0
-	// e := db.QueryRow(insertStmt, "testName", "testContent").Scan(&id)
-	// CheckError(e)
-
-	// fmt.Println(id)
-
-	// rows, err := db.Query(`SELECT "name","content" FROM "Chapters"`)
-	// CheckError(err)
-
-	// defer rows.Close()
-	// for rows.Next() {
-	// 	var name string
-	// 	var content string
-
-	// 	err = rows.Scan(&name, &content)
-	// 	CheckError(err)
-
-	// 	fmt.Println(name, content)
-	// }
-
 }
 
 // close database
