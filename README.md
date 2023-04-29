@@ -35,13 +35,11 @@ Add users       Table
 
 # Add Users
 
-add user_books  table   user_books_id -> Fkey books_id
-add user        table   user_id -> Fkey user_books_id
+when adding users add books
+query books based on user_books
+add all chapters from book added to user_books to user_chapters to track read status
 
-? user_books      has last read chapter to indicate new chapters    then mutation to update this status
-
-
-
+add last read chapter to user_books to pick up where left off -  set on next button
 
 # later
 favoriteBook        return  success     fav the book in database
