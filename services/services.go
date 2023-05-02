@@ -14,6 +14,7 @@ func StartServices() {
 	router.GET("/books", GetBooks)
 
 	router.POST("/download/book/", MutationDownloadBook)
+	router.POST("/delete/:id", MutationDeleteBook)
 
 	router.Run("0.0.0.0:8080")
 }
