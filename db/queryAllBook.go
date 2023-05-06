@@ -8,7 +8,7 @@ import (
 
 func QueryAllBooks() []models.Book {
 	insertStmt := `
-	select book_id, book_name, book_url, author, image_url
+	select book_id, book_name, author, image_url
 	from books`
 
 	var books []models.Book
