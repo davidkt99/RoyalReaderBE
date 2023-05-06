@@ -8,7 +8,7 @@ import (
 
 func QueryChapterById(chapterId int64) models.Chapter {
 	insertStmt := `
-	select chapter_id, chapter_name, chapter_content, book_key
+	select chapter_id, chapter_name, chapter_content, book_key, date_added
 	from chapters
 	where chapters.chapter_id=$1`
 
@@ -19,7 +19,7 @@ func QueryChapterById(chapterId int64) models.Chapter {
 
 	defer rows.Close()
 	rows.Next()
-	eScan := rows.Scan(&chapter.Id, &chapter.Name, &chapter.Content, &chapter.BookId)
+	eScan := rows.Scan(&chapter.Id, &chapter.Name, &chapter.Content, &chapter.BookId, &chapter.DateAdded)
 	CheckError(eScan)
 
 	fmt.Println("Chapter Found: ", chapter.Id)

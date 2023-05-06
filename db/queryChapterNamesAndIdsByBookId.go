@@ -3,13 +3,14 @@ package db
 import "fmt"
 
 type ChapterNameAndId struct {
-	Id   int64  `json:"id"`
-	Name string `json:"name"`
+	Id        int64  `json:"id"`
+	Name      string `json:"name"`
+	DateAdded string `json:"dateAdded"`
 }
 
 func QueryChapterNameAndIdsByBookId(bookId int64) []ChapterNameAndId {
 	insertStmt := `
-	select chapter_id, chapter_name
+	select chapter_id, chapter_name, date_added
 	from books
 	join chapters on books.book_id=chapters.book_key
 	where books.book_id=$1`
@@ -22,7 +23,7 @@ func QueryChapterNameAndIdsByBookId(bookId int64) []ChapterNameAndId {
 	defer rows.Close()
 	for rows.Next() {
 		chapter := ChapterNameAndId{}
-		e := rows.Scan(&chapter.Id, &chapter.Name)
+		e := rows.Scan(&chapter.Id, &chapter.Name, &chapter.DateAdded)
 		CheckError(e)
 
 		chapters = append(chapters, chapter)

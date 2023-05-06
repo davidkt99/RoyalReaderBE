@@ -1,8 +1,9 @@
 package models
 
 type Chapter struct {
-	Id      int64  `json:"id"`
-	BookId  int64  `json:"bookId"`
-	Name    string `json:"name"`
-	Content string `json:"content"`
+	Id        int64  `json:"id"`
+	BookId    int64  `json:"bookId"`
+	Name      string `json:"name"`
+	Content   string `json:"content"`
+	DateAdded string `json:"dateAdded"`
 }
