@@ -2,6 +2,7 @@ package jobs
 
 import (
 	"fmt"
+	"strconv"
 
 	"github.com/davidkt99/RoyalReaderBE/db"
 	"github.com/davidkt99/RoyalReaderBE/models"
@@ -17,7 +18,7 @@ func NewChaptersJob() {
 }
 
 func checkForNewChapters(book models.Book) {
-	url := util.ROYAL_ROAD_URL + string(book.Id)
+	url := util.ROYAL_ROAD_URL + strconv.FormatInt(book.Id, 10)
 
 	currChapterNum := scraper.ScrapeChatperNum(url)
 	storedChapterNum := db.QueryNumOfChapters(book.Id)
