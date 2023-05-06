@@ -8,7 +8,7 @@ import (
 
 func QueryAllBooks() []models.Book {
 	insertStmt := `
-	select book_id, book_name, book_url
+	select book_id, book_name, book_url, author, image_url
 	from books`
 
 	var books []models.Book
@@ -19,7 +19,7 @@ func QueryAllBooks() []models.Book {
 	defer rows.Close()
 	for rows.Next() {
 		book := models.Book{}
-		e := rows.Scan(&book.Id, &book.Name, &book.Url)
+		e := rows.Scan(&book.Id, &book.Name, &book.Author, &book.ImageUrl)
 		CheckError(e)
 
 		books = append(books, book)

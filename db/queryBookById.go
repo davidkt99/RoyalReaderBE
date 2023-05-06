@@ -8,7 +8,7 @@ import (
 
 func QueryBookById(bookId int64) models.Book {
 	insertStmt := `
-	select book_id, book_name, book_url
+	select book_id, book_name, author, image_url
 	from books
 	where books.book_id=$1`
 
@@ -19,7 +19,7 @@ func QueryBookById(bookId int64) models.Book {
 
 	defer rows.Close()
 	rows.Next()
-	eScan := rows.Scan(&book.Id, &book.Name, &book.Url)
+	eScan := rows.Scan(&book.Id, &book.Name, &book.Author, &book.ImageUrl)
 	CheckError(eScan)
 
 	fmt.Println("Book Found: ", book.Id)

@@ -1,12 +1,12 @@
 package db
 
-func QueryBookByUrl(url string) bool {
+func QueryBookExists(id int64) bool {
 	insertStmt := `
-	select book_id, book_name, book_url
+	select book_id
 	from books
-	where books.book_url=$1`
+	where books.book_id=$1`
 
-	rows, e := db.Query(insertStmt, url)
+	rows, e := db.Query(insertStmt, id)
 	CheckError(e)
 
 	defer rows.Close()

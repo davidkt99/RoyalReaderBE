@@ -8,7 +8,7 @@ import (
 
 func QueryAllBooksWithChapterCounts() []models.BookWithChapterCount {
 	insertStmt := `
-	select book_id, book_name, book_url, (select count('x') from chapters where chapters.book_key=books.book_id)
+	select book_id, book_name, author, image_url, (select count('x') from chapters where chapters.book_key=books.book_id)
 from books`
 
 	var books []models.BookWithChapterCount
@@ -19,7 +19,7 @@ from books`
 	defer rows.Close()
 	for rows.Next() {
 		book := models.BookWithChapterCount{}
-		e := rows.Scan(&book.Id, &book.Name, &book.Url, &book.NumOfChapters)
+		e := rows.Scan(&book.Id, &book.Name, &book.Author, &book.ImageUrl, &book.NumOfChapters)
 		CheckError(e)
 
 		books = append(books, book)
