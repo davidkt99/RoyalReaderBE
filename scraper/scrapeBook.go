@@ -41,8 +41,10 @@ func ScrapeBook(url string) (models.Book, []models.Chapter) {
 }
 
 func findImageUrl(page string) string {
-	re := regexp.MustCompile(`https://www.royalroadcdn.com/public/covers-large/.*.jpg?time=.*`)
-	return string(re.Find([]byte(page)))
+	_, imgClassCut, _ := strings.Cut(string(page), "<img class=\"thumbnail inline-block\" data-type=\"avatar\"")
+	_, imgCut, _ := strings.Cut(string(imgClassCut), "src=\"")
+	imgUrl, _, _ := strings.Cut(string(imgCut), "\"></img>")
+	return imgUrl
 }
 
 func findAllChapterUrls(chapterTable string) [][][]byte {

@@ -17,6 +17,7 @@ func DownloadBook(url string) string {
 	}
 
 	book, allChapters := scraper.ScrapeBook(url)
+	println(book.ImageUrl)
 	bookId := db.InsertBook(book)
 	success := db.InsertAllChapters(allChapters, bookId)
 	if success {

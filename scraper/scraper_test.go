@@ -30,6 +30,9 @@ func TestScrapeBook(t *testing.T) {
 	if !(book.Author == ExpectedAuthor) {
 		t.Errorf("Expected author to be %v, got %v", ExpectedAuthor, book.Author)
 	}
+	if !(book.ImageUrl == ExpectedImageUrl) {
+		t.Errorf("Expected image url to be %v, got %v", ExpectedImageUrl, book.ImageUrl)
+	}
 	if !(len(chapters) >= MinExpectedChapterCount) {
 		t.Errorf("Expected at least %v chapters, got %v", MinExpectedChapterCount, len(chapters))
 	}
