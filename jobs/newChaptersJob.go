@@ -3,6 +3,7 @@ package jobs
 import (
 	"fmt"
 	"strconv"
+	"time"
 
 	"github.com/davidkt99/RoyalReaderBE/db"
 	"github.com/davidkt99/RoyalReaderBE/models"
@@ -35,9 +36,16 @@ func checkForNewChapters(book models.Book) {
 
 func getNewChapters(book models.Book, url string, storedChapterNum int, numOfNewChapters int) {
 	chapters := scraper.ScrapeNewChapters(url, storedChapterNum)
+	weekday := int64(time.Now().Weekday())
 
 	for _, chapter := range chapters {
 		chapter.BookId = book.Id
 		db.InsertChapter(chapter)
+
+		addChapterToWeeklyUpdate(book.Id, chapter.Id, weekday)
 	}
+}
+
+func addChapterToWeeklyUpdate(bookId int64, chapterId int64, dayOfWeek int64) {
+	db.InsertWeeklyChapterUpdate(bookId, chapterId, dayOfWeek)
 }

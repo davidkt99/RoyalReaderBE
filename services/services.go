@@ -13,12 +13,14 @@ func StartServices() {
 		AllowHeaders:    []string{"Origin", "Content-Length", "Content-Type", "Authorization"},
 		ExposeHeaders:   []string{"Content-Length"},
 	}))
+
 	router.GET("/hello", SayHello)
 	router.GET("/book/chapters/:id", GetBookChapters)
 	router.GET("/book/:id", GetBook)
 	router.GET("/chapter/:id", GetChapter)
 	router.GET("/chapter/all/nameId/:id", GetAllChapterNameId)
 	router.GET("/books", GetBooks)
+	router.GET("/updates", GetUpdates)
 
 	router.POST("/download/book/", MutationDownloadBook)
 	router.POST("/delete/:id", MutationDeleteBook)

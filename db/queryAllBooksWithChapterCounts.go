@@ -28,6 +28,7 @@ from books`
 	//* Rows returned empty
 	if len(books) < 1 {
 		fmt.Println("No Books Found")
+		return []models.BookWithChapterCount{}
 	} else {
 		fmt.Println("Queried # of Books: ", len(books))
 	}

@@ -56,3 +56,7 @@ func SayHello(c *gin.Context) {
 func GetBooks(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, db.QueryAllBooksWithChapterCounts())
 }
+
+func GetUpdates(c *gin.Context) {
+	c.IndentedJSON(http.StatusOK, db.QueryWeeklyChapterUpdate())
+}
