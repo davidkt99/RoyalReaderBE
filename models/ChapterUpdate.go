@@ -6,6 +6,5 @@ type ChapterUpdate struct {
 	BookName    string `json:"bookName"`
 	ChapterName string `json:"chapterName"`
 	WeekDay     int64  `json:"weekDay"`
-	Name        string `json:"name"`
 	ImageUrl    string `json:"imageUrl"`
 }
