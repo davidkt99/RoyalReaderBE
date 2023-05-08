@@ -40,9 +40,9 @@ func getNewChapters(book models.Book, url string, storedChapterNum int, numOfNew
 
 	for _, chapter := range chapters {
 		chapter.BookId = book.Id
-		db.InsertChapter(chapter)
+		chapterId := db.InsertChapter(chapter)
 
-		addChapterToWeeklyUpdate(book.Id, chapter.Id, weekday)
+		addChapterToWeeklyUpdate(book.Id, chapterId, weekday)
 	}
 }
 

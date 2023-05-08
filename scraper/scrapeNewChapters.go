@@ -22,7 +22,7 @@ func ScrapeNewChapters(url string, oldChapterNum int) []models.Chapter {
 
 	var chapters []models.Chapter
 	for _, chapter := range chapterUrls {
-		chapters = append(chapters, ScrapeChapter("https://www.royalroad.com"+string(chapter[1])))
+		chapters = append(chapters, ScrapeChapter(util.ROYAL_ROAD_URL+string(chapter[1])))
 	}
 
 	return chapters
