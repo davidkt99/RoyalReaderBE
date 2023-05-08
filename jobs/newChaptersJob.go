@@ -19,7 +19,7 @@ func NewChaptersJob() {
 }
 
 func checkForNewChapters(book models.Book) {
-	url := util.ROYAL_ROAD_URL + strconv.FormatInt(book.Id, 10)
+	url := util.ROYAL_ROAD_URL_FICTION + strconv.FormatInt(book.Id, 10)
 
 	currChapterNum := scraper.ScrapeChatperNum(url)
 	storedChapterNum := db.QueryNumOfChapters(book.Id)

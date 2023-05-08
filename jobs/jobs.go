@@ -9,6 +9,7 @@ import (
 func CronJobsSetup() {
 	s := gocron.NewScheduler(time.UTC)
 
+	// * for production
 	s.Every(1).Day().At("7:00").Do(func() {
 		NewChaptersJob()
 	})
