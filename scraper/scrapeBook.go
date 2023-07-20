@@ -41,9 +41,9 @@ func ScrapeBook(url string) (models.Book, []models.Chapter) {
 }
 
 func findImageUrl(page string) string {
-	_, imgClassCut, _ := strings.Cut(string(page), "<img class=\"thumbnail inline-block\" data-type=\"avatar\"")
+	_, imgClassCut, _ := strings.Cut(string(page), "<img class=\"thumbnail inline-block\" data-type=\"cover\"")
 	_, imgCut, _ := strings.Cut(string(imgClassCut), "src=\"")
-	imgUrl, _, _ := strings.Cut(string(imgCut), "\"></img>")
+	imgUrl, _, _ := strings.Cut(string(imgCut), "\"")
 	return imgUrl
 }
 

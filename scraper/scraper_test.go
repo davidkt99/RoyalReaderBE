@@ -6,10 +6,10 @@ import (
 	"github.com/davidkt99/RoyalReaderBE/models"
 )
 
-const ExpectedTitle = "A Novel Concept"
-const ExpectedId = 66455
-const ExpectedAuthor = "Priam"
-const ExpectedImageUrl = "https://www.royalroadcdn.com/public/covers-large/a-novel-concept-aacaiedfixm.jpg?time=1680391196"
+const ExpectedTitle = "Mother of Learning"
+const ExpectedId = 21220
+const ExpectedAuthor = "nobody103"
+const ExpectedImageUrl = "https://www.royalroadcdn.com/public/covers-full/21220-mother-of-learning.jpg?time=1637247458"
 const MinExpectedChapterCount = 10
 
 var ExpectedBook = models.Book{
@@ -20,7 +20,7 @@ var ExpectedBook = models.Book{
 }
 
 func TestScrapeBook(t *testing.T) {
-	book, chapters := ScrapeBook("https://www.royalroad.com/fiction/66455/a-novel-concept")
+	book, chapters := ScrapeBook("https://www.royalroad.com/fiction/21220/mother-of-learning")
 	if !(book.Name == ExpectedTitle) {
 		t.Errorf("Expected title to be %v, got %v", ExpectedTitle, book.Name)
 	}

@@ -10,7 +10,7 @@ import (
 func ScrapeChapter(url string) models.Chapter {
 	page := util.Download(url)
 
-	_, cutTitle, _ := strings.Cut(string(page), `<h1 style="margin-top: 10px" class="font-white">`)
+	_, cutTitle, _ := strings.Cut(string(page), `<h1 style="margin-top: 10px" class="font-white break-word">`)
 	title, _, _ := strings.Cut(string(cutTitle), "</h1>")
 
 	_, cut, _ := strings.Cut(string(page), "<div class=\"chapter-inner chapter-content\">")
